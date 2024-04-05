@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, SafeAreaView, ScrollView } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Slider } from './components/Slider/Slider';
+import { SliderUpdated } from './components/Slider/SliderUpdated';
 import { RangeSlider } from './components/RangeSlider/RangeSlider';
 
 
@@ -24,8 +25,8 @@ export default function App() {
           <Text style={styles.text}>Slider - custom width</Text>
           <Slider max={500} steps={10} width={100} />
 
-
           <RangeSlider max={500} steps={1} />
+          <SliderUpdated ></SliderUpdated>
         </ScrollView>
       </SafeAreaView>
     </GestureHandlerRootView>

@@ -17,7 +17,23 @@ const WIDTH = Dimensions.get("window").width - 40;
 const KOBSIZE = 20;
 const MAXWIDTH = WIDTH - KOBSIZE / 2 + 6;
 
-export const RangeSlider = ({ max = 100, min = 0, steps = 1 }) => {
+
+export type RangeSliderPropsType = {
+    max: number,
+    steps: number,
+    min?: number,
+    //TODO: not option function...
+    onValueChange?: () => void,
+    minProgress?: number,
+    maxProgress?: number,
+    frozenMinProgress?: number,
+    frozenMaxProgress?: number,
+    disable?: boolean,
+    width?: number,
+};
+
+
+export const RangeSlider: React.FC<RangeSliderPropsType> = ({ max = 100, min = 0, steps = 1 }) => {
     const isDraggingKnob1 = useSharedValue(false);
     const isDraggingKnob2 = useSharedValue(false);
     const xKnob1 = useSharedValue(0);
@@ -120,12 +136,14 @@ export const RangeSlider = ({ max = 100, min = 0, steps = 1 }) => {
                 <Text>Range Swiper double- Basic</Text>
                 <View style={styles.rangeLabelContainer}>
                     <AnimatedTextInput
+                        //@ts-ignore
                         placeholder={min}
                         editable={false}
                         style={styles.rangeLabel}
                         animatedProps={propsLabel1}
                     />
                     <AnimatedTextInput
+                        //@ts-ignore
                         placeholder={max}
                         editable={false}
                         style={styles.rangeLabel}
